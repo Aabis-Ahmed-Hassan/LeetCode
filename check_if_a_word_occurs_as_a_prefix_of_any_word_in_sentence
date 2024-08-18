@@ -1,16 +1,21 @@
 class Solution {
   int isPrefixOfWord(String sentence, String searchWord) {
-    
-   List<String> sentencesList =  sentence.split(' ');
+    List<String> sentencesList = sentence.split(' ');
     int returnValue = -2;
-    for(var x=0;x<sentencesList.length;x++) {
-
-       if(sentencesList[x].contains(searchWord)) {
-         returnValue =x;
-         break;
-       }
+    for (var x = 0; x < sentencesList.length; x++) {
+      if (sentencesList[x].contains(searchWord)) {
+        int k = 0;
+        for (var i = 0; i < searchWord.length; i++) {
+          if (sentencesList[x][i] == searchWord[i]) {
+            k++;
+          }
+        }
+        if (k == searchWord.length) {
+          returnValue = x;
+          break;
+        }
+      }
     }
-return returnValue+1;
-    
+    return returnValue + 1;
   }
 }
